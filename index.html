@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+  <!-- Meta tags and SEO -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  <!-- Prefetch and preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <title>Luxury Fashion Studio - Premium Designer Collections</title>
+  <meta name="description" content="Discover our exclusive luxury fashion collections featuring premium materials and expert craftsmanship.">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:site_name" content="Luxury Fashion Studio">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="Luxury Fashion Studio - Premium Designer Collections">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Discover our exclusive luxury fashion collections featuring premium materials and expert craftsmanship.">
+
+  <!-- CSS Variables for theme colors and animations -->
+  <style>
+    :root {
+      /* Color Palette */
+      --color-primary-dark: #0B1320;
+      --color-accent-gold: #C8A165;
+      --color-warm-ivory: #F6EFE6;
+      --color-deep-text: #111827;
+      --color-muted-slate: #94A3B8;
+      --color-accent-coral: #E07A5F;
+      --color-white: #FFFFFF;
+      
+      /* Animation Variables */
+      --anim-fast: 180ms;
+      --anim-med: 360ms;
+      --anim-slow: 600ms;
+      --ease-std: cubic-bezier(0.16,1,0.3,1);
+      --ease-snappy: cubic-bezier(0.33,1,0.68,1);
+      
+      /* Typography */
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+    
+    /* Base styles for smooth loading */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--color-deep-text);
+      background: var(--color-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Loading state */
+    .loading {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all var(--anim-med) var(--ease-std);
+    }
+    
+    .loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN for demo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-dark': '#0B1320',
+            'accent-gold': '#C8A165',
+            'warm-ivory': '#F6EFE6',
+            'deep-text': '#111827',
+            'muted-slate': '#94A3B8',
+            'accent-coral': '#E07A5F',
+          },
+          fontFamily: {
+            'heading': ['Playfair Display', 'serif'],
+            'body': ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/main.css">
+</head>
+
+<body class="template-index loading" data-template="index">
+  <!-- Skip to content for accessibility -->
+  <a class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white px-4 py-2 rounded shadow-lg z-50" href="#main-content">
+    Skip to content
+  </a>
+
+  <!-- Navigation -->
+  <nav class="navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent backdrop-blur-sm">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="nav-wrapper flex items-center justify-between py-4">
+        
+        <!-- Logo -->
+        <div class="nav-logo">
+          <a href="index.html" class="logo-link flex items-center space-x-3 group">
+            <div class="logo-icon w-8 h-8 bg-accent-gold rounded-full flex items-center justify-center">
+              <span class="text-primary-dark font-bold text-lg">L</span>
+            </div>
+            <span class="logo-text font-heading text-xl font-bold text-deep-text group-hover:text-accent-gold transition-colors duration-200">
+              Luxury Studio
+            </span>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="nav-menu hidden lg:flex items-center space-x-8">
+          <a href="index.html" class="nav-link text-deep-text hover:text-accent-gold transition-colors duration-200 font-medium">
+            Home
+          </a>
+          <a href="products.html" class="nav-link text-deep-text hover:text-accent-gold transition-colors duration-200 font-medium">
+            Collections
+          </a>
+          <a href="custom-request.html" class="nav-link text-deep-text hover:text-accent-gold transition-colors duration-200 font-medium">
+            Custom Design
+          </a>
+          <a href="about.html" class="nav-link text-deep-text hover:text-accent-gold transition-colors duration-200 font-medium">
+            About
+          </a>
+          <a href="contact.html" class="nav-link text-deep-text hover:text-accent-gold transition-colors duration-200 font-medium">
+            Contact
+          </a>
+        </div>
+
+        <!-- Desktop Actions -->
+        <div class="nav-actions hidden lg:flex items-center space-x-4">
+          <button class="search-toggle p-2 text-deep-text hover:text-accent-gold transition-colors duration-200" aria-label="Search">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </button>
+          
+          <button class="cart-toggle relative p-2 text-deep-text hover:text-accent-gold transition-colors duration-200" aria-label="Shopping cart">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 10H6L5 9z"/>
+            </svg>
+            <span class="cart-count absolute -top-1 -right-1 w-4 h-4 bg-accent-coral text-white text-xs rounded-full flex items-center justify-center">0</span>
+          </button>
+          
+          <select class="currency-selector bg-transparent border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-accent-gold">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </select>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-toggle lg:hidden p-2 text-deep-text hover:text-accent-gold transition-colors duration-200" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main id="main-content" role="main">
+    
+    <!-- Hero Section with 3D -->
+    <section class="hero-3d relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-warm-ivory via-white to-warm-ivory">
+      
+      <!-- 3D Canvas Background -->
+      <div class="hero-canvas absolute inset-0 z-0">
+        <canvas id="hero-3d-canvas" class="w-full h-full"></canvas>
+        <!-- Fallback image when 3D is not supported -->
+        <div class="hero-fallback absolute inset-0 bg-gradient-to-br from-primary-dark via-gray-900 to-primary-dark opacity-10"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="hero-content relative z-10 text-center max-w-4xl mx-auto px-6">
+        
+        <!-- Hero Badge -->
+        <div class="hero-badge inline-flex items-center px-4 py-2 bg-white bg-opacity-90 backdrop-blur-sm rounded-full border border-accent-gold mb-6">
+          <span class="w-2 h-2 bg-accent-gold rounded-full mr-2"></span>
+          <span class="text-sm font-medium text-deep-text">New Collection 2025</span>
+        </div>
+
+        <!-- Hero Title -->
+        <h1 class="hero-title font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-deep-text mb-6 leading-tight">
+          Luxury
+          <span class="text-accent-gold">Redefined</span>
+        </h1>
+
+        <!-- Hero Description -->
+        <p class="hero-description text-lg md:text-xl text-muted-slate mb-8 max-w-2xl mx-auto leading-relaxed">
+          Experience the pinnacle of craftsmanship with our exclusive collection of luxury fashion pieces, meticulously designed for the discerning individual.
+        </p>
+
+        <!-- Hero Actions -->
+        <div class="hero-actions flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="products.html" class="btn-primary inline-flex items-center px-8 py-4 bg-accent-gold text-primary-dark font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">
+            Explore Collection
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          
+          <a href="custom-request.html" class="btn-secondary inline-flex items-center px-8 py-4 border-2 border-deep-text text-deep-text font-semibold rounded-lg hover:bg-deep-text hover:text-white transition-all duration-300">
+            Custom Design
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="w-6 h-10 border-2 border-deep-text rounded-full flex justify-center">
+          <div class="w-1 h-3 bg-deep-text rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products py-16 lg:py-24 bg-white">
+      <div class="container mx-auto px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="section-header text-center mb-12 lg:mb-16">
+          <span class="section-tag inline-block px-4 py-2 bg-warm-ivory text-accent-gold text-sm font-medium rounded-full mb-4">
+            Featured Collection
+          </span>
+          <h2 class="section-title font-heading text-3xl lg:text-5xl font-bold text-deep-text mb-6">
+            Exclusive Pieces
+          </h2>
+          <p class="section-description text-muted-slate text-lg max-w-2xl mx-auto">
+            Discover our handpicked selection of luxury items, each representing the perfect blend of traditional craftsmanship and contemporary design.
+          </p>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Product Card 1 -->
+          <article class="product-card group relative overflow-hidden rounded-xl bg-warm-ivory">
+            <div class="product-image relative overflow-hidden aspect-square">
+              <img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=400&h=400&fit=crop" 
+                   alt="Luxury Silk Jacket" 
+                   width="400" 
+                   height="400"
+                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              
+              <!-- Product Badge -->
+              <div class="product-badges absolute top-4 left-4 z-10">
+                <span class="badge bg-accent-coral text-white px-3 py-1 rounded-full text-sm font-medium">Limited Edition</span>
+              </div>
+
+              <!-- Quick Actions -->
+              <div class="quick-actions absolute top-4 right-4 z-10 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button class="action-btn w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-colors duration-200" title="Quick View">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                </button>
+                <button class="action-btn w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-colors duration-200" title="Add to Wishlist">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="product-info p-6">
+              <h3 class="product-title font-heading text-xl font-semibold text-deep-text mb-2 group-hover:text-accent-gold transition-colors duration-200">
+                Luxury Silk Jacket
+              </h3>
+              <p class="product-description text-muted-slate text-sm mb-4 line-clamp-2">
+                Exquisite silk jacket featuring hand-embroidered details and premium Italian craftsmanship.
+              </p>
+              <div class="product-price flex items-center justify-between">
+                <span class="price text-2xl font-bold text-deep-text">$2,450</span>
+                <button class="add-to-cart-quick bg-accent-gold text-primary-dark px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors duration-200">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 2 -->
+          <article class="product-card group relative overflow-hidden rounded-xl bg-warm-ivory">
+            <div class="product-image relative overflow-hidden aspect-square">
+              <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop" 
+                   alt="Designer Handbag" 
+                   width="400" 
+                   height="400"
+                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              
+              <div class="product-badges absolute top-4 left-4 z-10">
+                <span class="badge bg-accent-gold text-primary-dark px-3 py-1 rounded-full text-sm font-medium">Bestseller</span>
+              </div>
+
+              <div class="quick-actions absolute top-4 right-4 z-10 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button class="action-btn w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-colors duration-200" title="Quick View">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                </button>
+                <button class="action-btn w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-colors duration-200" title="Add to Wishlist">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="product-info p-6">
+              <h3 class="product-title font-heading text-xl font-semibold text-deep-text mb-2 group-hover:text-accent-gold transition-colors duration-200">
+                Designer Handbag
+              </h3>
+              <p class="product-description text-muted-slate text-sm mb-4 line-clamp-2">
+                Timeless leather handbag crafted from the finest materials with attention to every detail.
+              </p>
+              <div class="product-price flex items-center justify-between">
+                <span class="price text-2xl font-bold text-deep-text">$1,850</span>
+                <button class="add-to-cart-quick bg-accent-gold text-primary-dark px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors duration-200">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product Card 3 -->
+          <article class="product-card group relative overflow-hidden rounded-xl bg-warm-ivory">
+            <div class="product-image relative overflow-hidden aspect-square">
+              <img src="https://images.unsplash.com/photo-1506629905587-4b00468d6cb6?w=400&h=400&fit=crop" 
+                   alt="Premium Watch" 
+                   width="400" 
+                   height="400"
+                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              
+              <div class="product-badges absolute top-4 left-4 z-10">
+                <span class="badge bg-primary-dark text-white px-3 py-1 rounded-full text-sm font-medium">Made to Order</span>
+              </div>
+
+              <div class="quick-actions absolute top-4 right-4 z-10 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button class="action-btn w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-colors duration-200" title="Quick View">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                </button>
+                <button class="action-btn w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-colors duration-200" title="Add to Wishlist">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="product-info p-6">
+              <h3 class="product-title font-heading text-xl font-semibold text-deep-text mb-2 group-hover:text-accent-gold transition-colors duration-200">
+                Premium Timepiece
+              </h3>
+              <p class="product-description text-muted-slate text-sm mb-4 line-clamp-2">
+                Swiss-made luxury watch featuring mechanical movement and precious metal construction.
+              </p>
+              <div class="product-price flex items-center justify-between">
+                <span class="price text-2xl font-bold text-deep-text">$8,500</span>
+                <button class="add-to-cart-quick bg-accent-gold text-primary-dark px-4 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors duration-200">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- View All Link -->
+        <div class="text-center mt-12">
+          <a href="products.html" class="view-all-link inline-flex items-center px-8 py-3 border-2 border-deep-text text-deep-text font-semibold rounded-lg hover:bg-deep-text hover:text-white transition-all duration-300">
+            View All Collections
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer bg-primary-dark text-white py-16 lg:py-20">
+    <div class="container mx-auto px-6 lg:px-8">
+      
+      <!-- Footer Content -->
+      <div class="footer-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <div class="footer-logo flex items-center space-x-3 mb-6">
+            <div class="logo-icon w-8 h-8 bg-accent-gold rounded-full flex items-center justify-center">
+              <span class="text-primary-dark font-bold text-lg">L</span>
+            </div>
+            <span class="logo-text font-heading text-xl font-bold">Luxury Studio</span>
+          </div>
+          
+          <p class="footer-description text-gray-300 mb-6">
+            Creating exceptional luxury fashion pieces that embody elegance, craftsmanship, and timeless style.
+          </p>
+          
+          <div class="social-links flex space-x-4">
+            <a href="#" class="social-link w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-colors duration-200">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-colors duration-200">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.374 0 0 5.373 0 12s5.374 12 12 12 12-5.373 12-12S18.626 0 12 0zm5.568 8.16c-.172 1.858-.896 3.426-2.154 4.684-1.258 1.258-2.826 1.982-4.684 2.154-1.588.148-2.758-.044-3.622-.496-.864-.452-1.242-1.087-1.242-1.782 0-.695.378-1.33 1.242-1.782.864-.452 2.034-.644 3.622-.496 1.858.172 3.426.896 4.684 2.154 1.258 1.258 1.982 2.826 2.154 4.684z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent-gold hover:text-primary-dark transition-colors duration-200">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+          <h4 class="footer-heading font-semibold text-white mb-4">Quick Links</h4>
+          <ul class="footer-nav space-y-3">
+            <li><a href="index.html" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">Home</a></li>
+            <li><a href="products.html" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">Collections</a></li>
+            <li><a href="custom-request.html" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">Custom Design</a></li>
+            <li><a href="about.html" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">About Us</a></li>
+            <li><a href="contact.html" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Service -->
+        <div class="footer-service">
+          <h4 class="footer-heading font-semibold text-white mb-4">Customer Service</h4>
+          <ul class="footer-nav space-y-3">
+            <li><a href="#" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">Size Guide</a></li>
+            <li><a href="#" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">Care Instructions</a></li>
+            <li><a href="#" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">Returns & Exchanges</a></li>
+            <li><a href="#" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">Shipping Info</a></li>
+            <li><a href="#" class="footer-link text-gray-300 hover:text-accent-gold transition-colors duration-200">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+          <h4 class="footer-heading font-semibold text-white mb-4">Stay Connected</h4>
+          <p class="newsletter-description text-gray-300 mb-4">
+            Be the first to know about new collections and exclusive offers.
+          </p>
+          <form class="newsletter-form">
+            <div class="input-group flex">
+              <input type="email" placeholder="Enter your email" class="newsletter-input flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-l-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:border-transparent">
+              <button type="submit" class="newsletter-button px-6 py-3 bg-accent-gold text-primary-dark font-semibold rounded-r-lg hover:bg-opacity-90 transition-colors duration-200">
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between">
+        <div class="footer-copyright text-gray-400 text-sm mb-4 md:mb-0">
+          © 2025 Luxury Studio. All rights reserved.
+        </div>
+        <div class="footer-legal flex items-center space-x-6">
+          <a href="#" class="legal-link text-gray-400 hover:text-accent-gold text-sm transition-colors duration-200">Privacy Policy</a>
+          <a href="#" class="legal-link text-gray-400 hover:text-accent-gold text-sm transition-colors duration-200">Terms of Service</a>
+          <a href="#" class="legal-link text-gray-400 hover:text-accent-gold text-sm transition-colors duration-200">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript -->
+  <script>
+    // Theme configuration
+    window.themeConfig = {
+      shopUrl: 'luxury-studio-demo.myshopify.com',
+      instagramUsername: 'luxurystudio',
+      currency: 'USD',
+      enableShareApi: true,
+      enable3D: true
+    };
+    
+    // Remove loading class when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.classList.remove('loading');
+      document.body.classList.add('loaded');
+      
+      // Initialize theme
+      initTheme();
+    });
+
+    function initTheme() {
+      // Initialize navbar scroll effect
+      initNavbarScroll();
+      
+      // Initialize scroll animations
+      initScrollAnimations();
+      
+      // Initialize 3D hero (simplified version)
+      init3DHero();
+      
+      // Initialize mobile menu
+      initMobileMenu();
+    }
+
+    function initNavbarScroll() {
+      const navbar = document.querySelector('.navbar');
+      let lastScrollY = window.scrollY;
+      
+      window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > 100) {
+          navbar.classList.add('bg-white', 'shadow-lg');
+          navbar.classList.remove('bg-transparent');
+        } else {
+          navbar.classList.remove('bg-white', 'shadow-lg');
+          navbar.classList.add('bg-transparent');
+        }
+        
+        lastScrollY = currentScrollY;
+      });
+    }
+
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'all 600ms cubic-bezier(0.16,1,0.3,1)';
+        observer.observe(card);
+      });
+    }
+
+    function init3DHero() {
+      // Simplified 3D effect for demo
+      const canvas = document.getElementById('hero-3d-canvas');
+      if (canvas) {
+        // Add subtle animation to hero background
+        const heroSection = document.querySelector('.hero-3d');
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        heroSection.addEventListener('mousemove', function(e) {
+          const rect = heroSection.getBoundingClientRect();
+          mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+          mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+          
+          const content = document.querySelector('.hero-content');
+          const maxMove = 10;
+          
+          content.style.transform = `translate(${mouseX * maxMove}px, ${mouseY * maxMove}px)`;
+        });
+      }
+    }
+
+    function initMobileMenu() {
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function() {
+          // Simple mobile menu toggle - in full version would have slide-out panel
+          alert('Mobile menu would open here in full version');
+        });
+      }
+    }
+
+    // Add to cart functionality (demo)
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('add-to-cart-quick')) {
+        e.preventDefault();
+        const productTitle = e.target.closest('.product-card').querySelector('.product-title').textContent;
+        showNotification(`${productTitle} added to cart!`);
+        
+        // Update cart count
+        const cartCount = document.querySelector('.cart-count');
+        const currentCount = parseInt(cartCount.textContent);
+        cartCount.textContent = currentCount + 1;
+      }
+    });
+
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-y-full opacity-0 transition-all duration-300';
+      notification.textContent = message;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.classList.remove('translate-y-full', 'opacity-0');
+      }, 100);
+      
+      setTimeout(() => {
+        notification.classList.add('translate-y-full', 'opacity-0');
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+    }
+  </script>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

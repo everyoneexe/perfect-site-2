@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Request - Luxury Theme</title>
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Variables and Base Styles -->
+    <style>
+        :root {
+            --color-primary-dark: #0B1320;
+            --color-accent-gold: #C8A165;
+            --color-warm-ivory: #F6EFE6;
+            --color-deep-text: #111827;
+            --color-muted-slate: #94A3B8;
+            --color-accent-coral: #E07A5F;
+            --color-white: #FFFFFF;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; animation: none !important; }
+        }
+        
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--color-deep-text);
+            line-height: 1.6;
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 2rem;
+            background-color: var(--color-accent-gold);
+            color: var(--color-primary-dark);
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #b8956b;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 2rem;
+            background-color: transparent;
+            color: var(--color-deep-text);
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 2px solid var(--color-deep-text);
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background-color: var(--color-deep-text);
+            color: white;
+        }
+    </style>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#0B1320',
+                        'accent-gold': '#C8A165',
+                        'warm-ivory': '#F6EFE6',
+                        'deep-text': '#111827',
+                        'muted-slate': '#94A3B8',
+                        'accent-coral': '#E07A5F',
+                    },
+                    fontFamily: {
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-warm-ivory text-deep-text">
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 transition-all duration-300 ease-out" id="navbar">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a href="index.html" class="text-2xl font-heading font-bold text-deep-text hover:text-accent-gold transition-colors duration-200">
+                        LUXE
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-deep-text hover:text-accent-gold transition-colors duration-200">
+                        Home
+                    </a>
+                    <a href="products.html" class="nav-link text-deep-text hover:text-accent-gold transition-colors duration-200">
+                        Collections
+                    </a>
+                    <a href="custom-request.html" class="nav-link text-accent-gold border-b-2 border-accent-gold pb-1">
+                        Custom Request
+                    </a>
+                    <a href="about.html" class="nav-link text-deep-text hover:text-accent-gold transition-colors duration-200">
+                        About
+                    </a>
+                    <a href="contact.html" class="nav-link text-deep-text hover:text-accent-gold transition-colors duration-200">
+                        Contact
+                    </a>
+                </div>
+
+                <!-- Desktop Actions -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <div class="currency-selector">
+                        <select class="bg-transparent text-deep-text text-sm border border-gray-300 rounded px-2 py-1">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                    </div>
+                    <button class="cart-toggle text-deep-text hover:text-accent-gold transition-colors duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m-2.4 8L5 21h14"/>
+                        </svg>
+                        <span class="cart-count ml-1">0</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-deep-text" id="mobile-menu-toggle">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="lg:hidden mobile-menu hidden bg-primary-dark border-t border-gray-700" id="mobile-menu">
+            <div class="px-6 py-4 space-y-4">
+                <a href="index.html" class="block text-white hover:text-accent-gold transition-colors duration-200">Home</a>
+                <a href="products.html" class="block text-white hover:text-accent-gold transition-colors duration-200">Collections</a>
+                <a href="custom-request.html" class="block text-accent-gold">Custom Request</a>
+                <a href="about.html" class="block text-white hover:text-accent-gold transition-colors duration-200">About</a>
+                <a href="contact.html" class="block text-white hover:text-accent-gold transition-colors duration-200">Contact</a>
+                <div class="pt-4 border-t border-gray-700">
+                    <select class="bg-gray-800 text-white text-sm border border-gray-600 rounded px-2 py-1 w-full mb-2">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                    <button class="w-full text-left text-white hover:text-accent-gold transition-colors duration-200">
+                        Cart (0)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="custom-request-page bg-warm-ivory min-h-screen pt-20">
+        <div class="container mx-auto px-6 lg:px-8 py-8 lg:py-12">
+            
+            <!-- Page Header -->
+            <div class="page-header text-center mb-12 lg:mb-16">
+                <nav class="breadcrumb mb-6" aria-label="Breadcrumb">
+                    <ol class="flex items-center justify-center space-x-2 text-sm text-muted-slate">
+                        <li>
+                            <a href="index.html" class="hover:text-accent-gold transition-colors duration-200">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </li>
+                        <li class="text-deep-text font-medium">Custom Request</li>
+                    </ol>
+                </nav>
+
+                <h1 class="page-title font-heading text-3xl lg:text-5xl font-bold text-deep-text mb-4">
+                    Custom Request
+                </h1>
+
+                <div class="page-description max-w-3xl mx-auto">
+                    <p class="text-lg lg:text-xl text-muted-slate leading-relaxed">
+                        Transform your vision into a luxury masterpiece. Upload your design concept and we'll create something extraordinary just for you.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Process Steps -->
+            <div class="process-steps mb-16">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Step 1 -->
+                    <div class="process-step text-center">
+                        <div class="step-icon w-16 h-16 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-primary-dark font-bold text-xl">1</span>
+                        </div>
+                        <h3 class="step-title font-heading text-xl font-semibold text-deep-text mb-2">
+                            Upload Design
+                        </h3>
+                        <p class="step-description text-muted-slate">
+                            Share your design concept, inspiration images, or sketches. We accept various file formats.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step text-center">
+                        <div class="step-icon w-16 h-16 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-primary-dark font-bold text-xl">2</span>
+                        </div>
+                        <h3 class="step-title font-heading text-xl font-semibold text-deep-text mb-2">
+                            Preview & Share
+                        </h3>
+                        <p class="step-description text-muted-slate">
+                            View a 3D preview of your concept and share it with us via Instagram for consultation.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step text-center">
+                        <div class="step-icon w-16 h-16 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-primary-dark font-bold text-xl">3</span>
+                        </div>
+                        <h3 class="step-title font-heading text-xl font-semibold text-deep-text mb-2">
+                            Receive Quote
+                        </h3>
+                        <p class="step-description text-muted-slate">
+                            Get a detailed quote with timeline and high-fidelity renders within 24-48 hours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Request Form -->
+            <div class="custom-request-section bg-white rounded-xl p-8 lg:p-12 mb-16">
+                <div class="form-header text-center mb-8">
+                    <h2 class="form-title font-heading text-2xl lg:text-3xl font-bold text-deep-text mb-4">
+                        Start Your Custom Project
+                    </h2>
+                    <p class="form-description text-muted-slate max-w-2xl mx-auto">
+                        Fill out the form below to begin your custom design journey. Our team will review your request and get back to you within 24 hours.
+                    </p>
+                </div>
+
+                <form class="custom-request-form max-w-4xl mx-auto" id="customRequestForm">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        
+                        <!-- Left Column -->
+                        <div class="form-left">
+                            <!-- Project Details -->
+                            <div class="form-group mb-6">
+                                <label for="project-name" class="form-label block text-sm font-semibold text-deep-text mb-2">
+                                    Project Name *
+                                </label>
+                                <input type="text" id="project-name" name="project_name" 
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-accent-gold transition-colors duration-200"
+                                       placeholder="Enter your project name" required>
+                            </div>
+
+                            <div class="form-group mb-6">
+                                <label for="project-type" class="form-label block text-sm font-semibold text-deep-text mb-2">
+                                    Project Type *
+                                </label>
+                                <select id="project-type" name="project_type" 
+                                        class="form-select w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-accent-gold transition-colors duration-200" required>
+                                    <option value="">Select project type</option>
+                                    <option value="jacket">Custom Jacket</option>
+                                    <option value="handbag">Designer Handbag</option>
+                                    <option value="accessory">Luxury Accessory</option>
+                                    <option value="footwear">Custom Footwear</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-6">
+                                <label for="budget-range" class="form-label block text-sm font-semibold text-deep-text mb-2">
+                                    Budget Range
+                                </label>
+                                <select id="budget-range" name="budget_range" 
+                                        class="form-select w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-accent-gold transition-colors duration-200">
+                                    <option value="">Select budget range</option>
+                                    <option value="1000-2500">$1,000 - $2,500</option>
+                                    <option value="2500-5000">$2,500 - $5,000</option>
+                                    <option value="5000-10000">$5,000 - $10,000</option>
+                                    <option value="10000+">$10,000+</option>
+                                </select>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div class="form-group mb-6">
+                                <label for="contact-name" class="form-label block text-sm font-semibold text-deep-text mb-2">
+                                    Full Name *
+                                </label>
+                                <input type="text" id="contact-name" name="contact_name" 
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-accent-gold transition-colors duration-200"
+                                       placeholder="Enter your full name" required>
+                            </div>
+
+                            <div class="form-group mb-6">
+                                <label for="contact-email" class="form-label block text-sm font-semibold text-deep-text mb-2">
+                                    Email Address *
+                                </label>
+                                <input type="email" id="contact-email" name="contact_email" 
+                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-accent-gold transition-colors duration-200"
+                                       placeholder="Enter your email address" required>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="form-right">
+                            <!-- Project Description -->
+                            <div class="form-group mb-6">
+                                <label for="project-description" class="form-label block text-sm font-semibold text-deep-text mb-2">
+                                    Project Description *
+                                </label>
+                                <textarea id="project-description" name="project_description" rows="8"
+                                          class="form-textarea w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-accent-gold transition-colors duration-200"
+                                          placeholder="Describe your vision, inspiration, preferred materials, colors, and any specific requirements..." required></textarea>
+                            </div>
+
+                            <!-- Special Requirements -->
+                            <div class="form-group mb-6">
+                                <label for="special-requirements" class="form-label block text-sm font-semibold text-deep-text mb-2">
+                                    Special Requirements
+                                </label>
+                                <textarea id="special-requirements" name="special_requirements" rows="4"
+                                          class="form-textarea w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-accent-gold transition-colors duration-200"
+                                          placeholder="Any special requirements, sizing information, or additional notes..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions mt-8 pt-8 border-t border-gray-200">
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="form-privacy text-sm text-muted-slate">
+                                <p>
+                                    <input type="checkbox" id="privacy-consent" name="privacy_consent" 
+                                           class="mr-2 accent-accent-gold" required>
+                                    I agree to the <a href="#" class="text-accent-gold hover:underline">privacy policy</a> and 
+                                    <a href="#" class="text-accent-gold hover:underline">terms of service</a>
+                                </p>
+                            </div>
+                            
+                            <div class="form-buttons flex gap-4">
+                                <button type="submit" class="btn-primary" id="submitBtn">
+                                    Submit Request
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Featured Gallery -->
+            <div class="featured-gallery mt-16 lg:mt-20">
+                <div class="gallery-header text-center mb-12">
+                    <h2 class="gallery-title font-heading text-3xl lg:text-4xl font-bold text-deep-text mb-4">
+                        Custom Creations Gallery
+                    </h2>
+                    <p class="gallery-description text-muted-slate max-w-2xl mx-auto">
+                        Explore some of our previous custom projects to inspire your own unique design.
+                    </p>
+                </div>
+
+                <div class="gallery-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-item relative overflow-hidden rounded-xl bg-gray-100 aspect-square group">
+                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                             alt="Custom creation example 1"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                             width="400"
+                             height="400"
+                             loading="lazy">
+                        
+                        <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                            <div class="overlay-content transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <p class="text-white text-sm font-medium">Custom Leather Jacket</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item relative overflow-hidden rounded-xl bg-gray-100 aspect-square group">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                             alt="Custom creation example 2"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                             width="400"
+                             height="400"
+                             loading="lazy">
+                        
+                        <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                            <div class="overlay-content transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <p class="text-white text-sm font-medium">Designer Handbag</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item relative overflow-hidden rounded-xl bg-gray-100 aspect-square group">
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                             alt="Custom creation example 3"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                             width="400"
+                             height="400"
+                             loading="lazy">
+                        
+                        <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                            <div class="overlay-content transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                <p class="text-white text-sm font-medium">Custom Sneakers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section mt-16 lg:mt-20 bg-white rounded-xl p-8 lg:p-12">
+                <div class="faq-header text-center mb-12">
+                    <h2 class="faq-title font-heading text-3xl lg:text-4xl font-bold text-deep-text mb-4">
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="faq-description text-muted-slate max-w-2xl mx-auto">
+                        Everything you need to know about our custom design process.
+                    </p>
+                </div>
+
+                <div class="faq-list space-y-6 max-w-3xl mx-auto">
+                    
+                    <div class="faq-item border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full text-left flex items-center justify-between py-2 font-semibold text-deep-text hover:text-accent-gold transition-colors duration-200"
+                                onclick="toggleFAQ(this)">
+                            <span>How long does the custom design process take?</span>
+                            <svg class="faq-icon w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden mt-4 text-muted-slate">
+                            <p>Our custom design process typically takes 2-4 weeks from concept approval to completion. This includes initial consultation, design development, client approval, and final production. Rush orders may be available for additional fees.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full text-left flex items-center justify-between py-2 font-semibold text-deep-text hover:text-accent-gold transition-colors duration-200"
+                                onclick="toggleFAQ(this)">
+                            <span>What file formats do you accept for design uploads?</span>
+                            <svg class="faq-icon w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden mt-4 text-muted-slate">
+                            <p>We accept JPG, PNG, WebP, PDF, AI, and PSD files up to 10MB each. For best results, please provide high-resolution images. If you have other file formats, please contact us directly.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full text-left flex items-center justify-between py-2 font-semibold text-deep-text hover:text-accent-gold transition-colors duration-200"
+                                onclick="toggleFAQ(this)">
+                            <span>Can I request changes to the design after approval?</span>
+                            <svg class="faq-icon w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer hidden mt-4 text-muted-slate">
+                            <p>We include up to 2 rounds of revisions in our custom design service. Additional changes may incur extra costs depending on the complexity. Major changes after production begins may require restarting the process.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-primary-dark text-white py-16">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-12">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <h3 class="text-2xl font-heading font-bold mb-4 text-accent-gold">LUXE</h3>
+                    <p class="text-gray-300 mb-6">Crafting luxury pieces with uncompromising attention to detail and timeless elegance.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-links">
+                    <h4 class="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-accent-gold transition-colors duration-200">Home</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-accent-gold transition-colors duration-200">Collections</a></li>
+                        <li><a href="custom-request.html" class="text-gray-300 hover:text-accent-gold transition-colors duration-200">Custom Request</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-accent-gold transition-colors duration-200">About</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Care -->
+                <div class="footer-support">
+                    <h4 class="text-lg font-semibold mb-4 text-white">Customer Care</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-300 hover:text-accent-gold transition-colors duration-200">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent-gold transition-colors duration-200">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent-gold transition-colors duration-200">Care Instructions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent-gold transition-colors duration-200">Returns</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-newsletter">
+                    <h4 class="text-lg font-semibold mb-4 text-white">Stay Updated</h4>
+                    <p class="text-gray-300 mb-4">Subscribe to receive updates on new collections and exclusive offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-l-lg text-deep-text">
+                        <button type="submit" class="bg-accent-gold text-primary-dark px-4 py-2 rounded-r-lg hover:bg-accent-coral transition-colors duration-200">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2024 LUXE. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-accent-gold transition-colors duration-200">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-accent-gold transition-colors duration-200">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/main.js"></script>
+    <script>
+        // FAQ Toggle Function
+        function toggleFAQ(button) {
+            const faqItem = button.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = button.querySelector('.faq-icon');
+            
+            // Close other open FAQs
+            document.querySelectorAll('.faq-question').forEach(otherButton => {
+                if (otherButton !== button) {
+                    const otherAnswer = otherButton.closest('.faq-item').querySelector('.faq-answer');
+                    const otherIcon = otherButton.querySelector('.faq-icon');
+                    otherAnswer.classList.add('hidden');
+                    otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Form submission
+        document.getElementById('customRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your custom request! We will get back to you within 24 hours.');
+        });
+    </script>
+</body>
+</html>
